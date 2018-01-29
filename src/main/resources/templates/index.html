@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Welcome</title>
+</head>
+<body>
+    <h3>Welcome to Array as Request Body Demo</h3>
+    <form action="/index" th:object="${res}" method="post">
+        <table>
+            <tr th:each="row, rowStat : ${initial}">
+                <td th:each="cell: ${row}">
+                    <select>
+                        <option th:each="cell, colStat: ${row}" th:text="${initial[rowStat.index][colStat.index]}"
+                        th:value="${res[rowStat.index][colStat.index]}"></option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <button type="submit">Set Info</button>
+    </form>
+
+</body>
+</html>
